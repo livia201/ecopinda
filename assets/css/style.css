@@ -1,0 +1,161 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  
+}
+
+/* Tela */
+body {
+  height: 100vh;
+  display: flex;
+}
+
+/* Lado esquerdo */
+.left {
+  width: 50%;
+  overflow: hidden;
+}
+
+/* Imagem esquerda */
+.left img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* Lado direito */
+.right {
+  width: 50%;
+  background: #242424;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Caixa login */
+.container {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Título */
+h1 {
+  text-align: center;
+  font-weight: 200;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+
+  border: 1px solid #ccc;
+  border-radius: 8px;
+
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #ffffff;
+}
+
+/* Botão */
+button {
+  width: 100%;
+  padding: 12px;
+
+  border: solid 1px white;
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0);
+  color: white;
+
+  font-size: 16px;
+  font-weight: 200;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #00000052;
+}
+
+.btn-cadastro {
+  width: 100%;
+  padding: 12px;
+
+  border: solid 1px white;
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0);
+  color: white;
+
+  font-size: 16px;
+  font-weight: 200;
+
+  cursor: pointer;
+  transition: 0.3s;
+
+  text-align: center;
+  text-decoration: none;
+
+  display: block;
+  margin-top: 15px;
+}
+
+.btn-cadastro:hover {
+  background: #00000052;
+  text-decoration: none;
+}
+
+/* Link */
+a {
+  display: block;
+  margin-top: 15px;
+
+  text-align: center;
+
+  color: #e6e2e0;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  padding-bottom: 50px;  
+  width: 320px;
+  margin-bottom: 20px;
+}
+
+.erro{
+    display: block;
+    width: 100%;
+    background: #ffe5e5;
+    color: #d60000;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+}
