@@ -29,6 +29,12 @@ A plataforma apresenta informações organizadas sobre pontos turísticos, hoté
 
 Além disso, o projeto busca incentivar o turismo local e a valorização dos espaços naturais e urbanos, promovendo uma experiência mais acessível e informativa para os usuários.
 
+---
+
+## 4. Como editar localmente
+
+Pegue o  sql do migrations.sql e lançar no servidor local. 
+
  
 
  
