@@ -16,7 +16,7 @@
 <body>
 
     <div class="left">
-        <img src="assets/img/home.png" alt="Imagem">
+        <img src="assets/img/PindaEco.png" alt="Imagem">
     </div>
 
     <div class="right">
