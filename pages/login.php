@@ -6,7 +6,7 @@
 <head>
     <title>Login</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
@@ -16,7 +16,7 @@
 <body>
 
     <div class="left">
-        <img src="assets/img/PindaEco.png" alt="Imagem">
+        <img src="../assets/img/PindaEco.png" alt="Imagem">
     </div>
 
     <div class="right">
@@ -24,7 +24,7 @@
         <div class="container">
 
 
-            <img src="assets/img/silent_Page.png" alt="Logo" class="logo">
+            <img src="../assets/img2/logo.png" alt="Logo" class="logo">
 
             <h1>Login</h1>
 

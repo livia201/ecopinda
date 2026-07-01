@@ -1,6 +1,6 @@
 <header class="header">
         <div class="logo">
-            <img src="img/logo.png" alt="">
+            <img src="../assets/img2/logo.png" alt="">
         </div>
 
         <nav class="menu">
@@ -9,7 +9,7 @@
             <a href="#">Turismo</a>
             <a href="hoteis/index.html">Hotéis</a>
             <a href="gastronomia/index.html">Gastronomia</a>
-            <a href="login.php">Login</a>
+            <a href="/../pages/login.php">Login</a>
             <span class="indicator"></span>
         </nav>
     </header>
