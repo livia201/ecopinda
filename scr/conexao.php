@@ -10,7 +10,7 @@ $banco = "if0_42297225_pindaeco";
 // $host = "localhost";
 // $usuario = "root";
 // $senha = "1234";
-// $banco = "sistema_login";
+// $banco = "pindaeco";
 
 $conexao = mysqli_connect($host, $usuario,$senha, $banco);
 
