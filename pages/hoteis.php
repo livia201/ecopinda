@@ -13,7 +13,7 @@ include "../includes/header.php";
 
 ?>
 
-<link rel="stylesheet" href="/../assets/css/style_hoteis.css">
+<link rel="stylesheet" href="/ecopinda/assets/css/style_hoteis.css">
 
 
 <div class="hoteis-container">
@@ -26,7 +26,7 @@ include "../includes/header.php";
             Lista de Hotéis
         </h2>
 
-        <a href="/pages/hoteis/create.php" class="botao-cadastro">
+        <a href="/ecopinda/pages/hoteis/create.php" class="botao-cadastro">
             Cadastrar Hotel
         </a>
 

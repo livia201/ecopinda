@@ -39,8 +39,8 @@ if (!function_exists('iniciaisHeader')) {
         <a href="../index.php">Início</a>
         <a href="/pages/cidade.php">Cidade</a>
         <a href="/pages/turismo.php">Turismo</a>
-        <a href="/pages/hoteis.php">Hotéis</a>
-        <a href="pages/restaurante.php">Restaurantes</a>
+        <a href="/ecopinda/pages/hoteis.php">Hotéis</a>
+        <a href="/ecopinda/pages/restaurante.php">Restaurantes</a>
 
         <?php if ($usuarioLogado): ?>
 
