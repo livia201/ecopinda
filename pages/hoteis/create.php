@@ -1,16 +1,14 @@
 <?php
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 
-
-require_once "../../classes/hoteis.php";
+require_once "../../classe/hoteis.php";
 
 $hotel = new Hotel();
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
- 
 
     $hotel->cadastrar(
         $_POST['nome'],
@@ -22,91 +20,202 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_POST['email'],
         $_POST['quantidade_quartos'],
         $_POST['possui_wifi'],
-        $_POST['possui_estacionamento'],
-     
+        $_POST['possui_estacionamento']
     );
 
-    header("Location: read.php");
+    header("Location: ../hoteis.php");
     exit;
 }
 
-
-include "../../includes/header.php";
 include "../../includes/head.php";
+include "../../includes/header.php";
 
 ?>
 
-<h2>Cadastrar Hotel</h2>
+<link rel="stylesheet" href="../../assets/css/style_hoteis.css">
 
-<form method="POST">
+<div class="formulario-container">
 
-  <p>
-      Nome:<br>
-      <input type="text" name="nome" required>
-    </p>
+    <div class="formulario-hotel">
 
-  <p>
-      Endereço:<br>
-      <input type="text" name="endereco" required>
-    </p>
+        <h2>Cadastrar Hotel</h2>
 
-    <p>
-    Cidade:<br>
-    <input type="text" name="cidade" required>
-</p>
+        <form method="POST">
 
-<p>
-    Estado:<br>
-    <input type="text" name="estado" required>
-</p>
+            <div class="formulario-linha">
 
-<p>
-    CEP:<br>
-    <input type="text" name="cep" required>
-   </p>
+                <div class="campo">
+                    <label for="nome">Nome do Hotel</label>
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        required
+                    >
+                </div>
 
+                <div class="campo">
+                    <label for="cidade">Cidade</label>
+                    <input
+                        type="text"
+                        id="cidade"
+                        name="cidade"
+                        required
+                    >
+                </div>
 
-    <p>
-        Telefone:<br>
-        <input type="text" name="telefone">
-    </p>
+            </div>
 
-    <p>
-        Email:<br>
-        <input type="email" name="email">
-    </p>
+            <div class="campo">
 
-    <p>
-        Quantidade de Quartos:<br>
-        <input type="number" name="quantidade_quartos">
-    </p>
+                <label for="endereco">Endereço</label>
 
-    <p>
-        Possui Wi-Fi:<br>
-        <select name="possui_wifi" required>
-            <option value="1">Sim</option>
-            <option value="0">Não</option>
-        </select>
-    </p>
+                <input
+                    type="text"
+                    id="endereco"
+                    name="endereco"
+                    required
+                >
 
-    <p>
-        Possui Estacionamento:<br>
-        <select name="possui_estacionamento" required>
-            <option value="1">Sim</option>
-            <option value="0">Não</option>
-        </select>
-    </p>
+            </div>
 
-    
+            <div class="formulario-linha">
 
-    <button type="submit">
-        Salvar 
-    </button>
+                <div class="campo">
 
-</form>
+                    <label for="estado">Estado</label>
 
+                    <input
+                        type="text"
+                        id="estado"
+                        name="estado"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="cep">CEP</label>
+
+                    <input
+                        type="text"
+                        id="cep"
+                        name="cep"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+            <div class="formulario-linha">
+
+                <div class="campo">
+
+                    <label for="telefone">Telefone</label>
+
+                    <input
+                        type="text"
+                        id="telefone"
+                        name="telefone"
+                    >
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="email">Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                    >
+
+                </div>
+
+            </div>
+
+            <div class="formulario-linha">
+
+                <div class="campo">
+
+                    <label for="quantidade_quartos">
+                        Quantidade de Quartos
+                    </label>
+
+                    <input
+                        type="number"
+                        id="quantidade_quartos"
+                        name="quantidade_quartos"
+                        min="1"
+                    >
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="possui_wifi">
+                        Possui Wi-Fi?
+                    </label>
+
+                    <select
+                        id="possui_wifi"
+                        name="possui_wifi"
+                        required
+                    >
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="campo">
+
+                <label for="possui_estacionamento">
+                    Possui Estacionamento?
+                </label>
+
+                <select
+                    id="possui_estacionamento"
+                    name="possui_estacionamento"
+                    required
+                >
+                    <option value="1">Sim</option>
+                    <option value="0">Não</option>
+                </select>
+
+            </div>
+
+            <div class="botoes-formulario">
+
+                <a
+                    href="../hoteis.php"
+                    class="botao-voltar"
+                >
+                    Voltar
+                </a>
+
+                <button
+                    type="submit"
+                    class="botao-salvar"
+                >
+                    Salvar Hotel
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
 
 <?php
-include "../../includes/footer.php";
-?>
 
+include "../../includes/footer.php";
+
+?>

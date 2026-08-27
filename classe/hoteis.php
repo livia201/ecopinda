@@ -38,66 +38,65 @@ class Hotel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function cadastrar(
-        $nome,
-        $endereco, 
-        $cidade,
-        $estado, 
-        $cep,
-        $telefone,
-        $email,
-        $quantidade_quartos,
-        $possui_wifi,
-        $possui_estacionamento,
-        $data_cadastro 
-    ) {
+   public function cadastrar(
+    $nome,
+    $endereco,
+    $cidade,
+    $estado,
+    $cep,
+    $telefone,
+    $email,
+    $quantidade_quartos,
+    $possui_wifi,
+    $possui_estacionamento
+) {
 
-        $sql = "
-            INSERT INTO hotel
-            (
-                nome,
-                endereco, 
-                cidade,
-                estado,
-                cep,
-                telefone,
-                email,
-                quantidade_quartos,
-                possui_wifi,
-                possui_estacionamento,
-                data_cadastro
-            )
-            VALUES
-            (
-                :nome,
-                :endereco, 
-                :cidade,
-                :estado,
-                :cep,
-                :telefone,
-                :email,
-                :quantidade_quartos,
-                :possui_wifi,
-                :possui_estacionamento,
-                :data_cadastro
-            )
-        ";
+    $sql = "
+        INSERT INTO hotel
+        (
+            nome,
+            endereco,
+            cidade,
+            estado,
+            cep,
+            telefone,
+            email,
+            quantidade_quartos,
+            possui_wifi,
+            possui_estacionamento
+        )
+        VALUES
+        (
+            :nome,
+            :endereco,
+            :cidade,
+            :estado,
+            :cep,
+            :telefone,
+            :email,
+            :quantidade_quartos,
+            :possui_wifi,
+            :possui_estacionamento
+        )
+    ";
 
-        $stmt = $this->conexao->prepare($sql);
-        $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':endereco', $endereco);
-        $stmt->bindParam(':cidade', $cidade);
-        $stmt->bindParam(':estado', $estado);
-        $stmt->bindParam(':cep', $cep);
-        $stmt->bindParam(':telefone', $telefone);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':quantidade_quartos', $quantidade_quartos);
-        $stmt->bindParam(':possui_wifi', $possui_wifi);
-        $stmt->bindParam(':possui_estacionamento', $possui_estacionamento);
-        $stmt->bindParam(':data_cadastro', $data_cadastro);
+    $stmt = $this->conexao->prepare($sql);
 
-        return $stmt->execute();
-    }
+    $stmt->bindParam(':nome', $nome);
+    $stmt->bindParam(':endereco', $endereco);
+    $stmt->bindParam(':cidade', $cidade);
+    $stmt->bindParam(':estado', $estado);
+    $stmt->bindParam(':cep', $cep);
+    $stmt->bindParam(':telefone', $telefone);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':quantidade_quartos', $quantidade_quartos);
+    $stmt->bindParam(':possui_wifi', $possui_wifi);
+    $stmt->bindParam(':possui_estacionamento', $possui_estacionamento);
+
+    return $stmt->execute();
+}
+
+    
 
     public function editar(
     $id,

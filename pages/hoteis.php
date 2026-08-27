@@ -13,153 +13,154 @@ include "../includes/header.php";
 
 ?>
 
-<link rel="stylesheet" href="../assets/css/style_hoteis.css">
+<link rel="stylesheet" href="/../assets/css/style_hoteis.css">
 
-<div class="container">
 
-    <div class="hoteis-container">
+<div class="hoteis-container">
 
-        <h2 class="titulo">Lista de Hotéis</h2>
+    <h2 class="titulo">Hotéis em Pindamonhangaba</h2>
 
-        <div class="hoteis-topo">
+    <div class="hoteis-topo">
 
-            <h2 class="hoteis-titulo">
-                Lista de Hotéis
-            </h2>
+        <h2 class="hoteis-titulo">
+            Lista de Hotéis
+        </h2>
 
-        </div>
+        <a href="/pages/hoteis/create.php" class="botao-cadastro">
+            Cadastrar Hotel
+        </a>
 
-        <div class="tabela-wrapper">
+    </div>
 
-            <table class="tabela-hoteis">
+    <div class="tabela-wrapper">
 
-                <thead>
+        <table class="tabela-hoteis">
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Endereço</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                    <th>CEP</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>Quantidade de Quartos</th>
+                    <th>Possui Wi-Fi</th>
+                    <th>Possui Estacionamento</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <?php foreach ($dados as $linha): ?>
+
                     <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Endereço</th>
-                        <th>Cidade</th>
-                        <th>Estado</th>
-                        <th>CEP</th>
-                        <th>Telefone</th>
-                        <th>Email</th>
-                        <th>Quantidade de Quartos</th>
-                        <th>Possui Wi-Fi</th>
-                        <th>Possui Estacionamento</th>
-                        <th>Ações</th>
+
+                        <td>
+                            <?= htmlspecialchars($linha['id']) ?>
+                        </td>
+
+                        <td>
+                            <?= htmlspecialchars($linha['nome']) ?>
+                        </td>
+
+                        <td>
+                            <?= htmlspecialchars($linha['endereco']) ?>
+                        </td>
+
+                        <td>
+                            <?= htmlspecialchars($linha['cidade']) ?>
+                        </td>
+
+                        <td>
+                            <?= htmlspecialchars($linha['estado']) ?>
+                        </td>
+
+                        <td>
+                            <?= htmlspecialchars($linha['cep']) ?>
+                        </td>
+
+                        <td>
+                            <?= htmlspecialchars($linha['telefone']) ?>
+                        </td>
+
+                        <td>
+                            <?= htmlspecialchars($linha['email']) ?>
+                        </td>
+
+                        <td>
+                            <?= htmlspecialchars($linha['quantidade_quartos']) ?>
+                        </td>
+
+                        <td>
+
+                            <?php if ($linha['possui_wifi']): ?>
+
+                                <span class="status-sim">
+                                    Sim
+                                </span>
+
+                            <?php else: ?>
+
+                                <span class="status-nao">
+                                    Não
+                                </span>
+
+                            <?php endif; ?>
+
+                        </td>
+
+                        <td>
+
+                            <?php if ($linha['possui_estacionamento']): ?>
+
+                                <span class="status-sim">
+                                    Sim
+                                </span>
+
+                            <?php else: ?>
+
+                                <span class="status-nao">
+                                    Não
+                                </span>
+
+                            <?php endif; ?>
+
+                        </td>
+
+                        <td>
+
+                            <div class="acoes">
+
+                                <a
+                                    class="editar"
+                                    href="atualizarhotel.php?id=<?= $linha['id'] ?>"
+                                >
+                                    Editar
+                                </a>
+
+                                <a
+                                    class="excluir"
+                                    href="hoteis/delete.php?id=<?= $linha['id'] ?>"
+                                    onclick="return confirm('Deseja realmente excluir este hotel?')"
+                                >
+                                    Excluir
+                                </a>
+
+                            </div>
+
+                        </td>
+
                     </tr>
-                </thead>
 
-                <tbody>
+                <?php endforeach; ?>
 
-                    <?php foreach ($dados as $linha): ?>
+            </tbody>
 
-                        <tr>
-
-                            <td>
-                                <?= htmlspecialchars($linha['id']) ?>
-                            </td>
-
-                            <td>
-                                <?= htmlspecialchars($linha['nome']) ?>
-                            </td>
-
-                            <td>
-                                <?= htmlspecialchars($linha['endereco']) ?>
-                            </td>
-
-                            <td>
-                                <?= htmlspecialchars($linha['cidade']) ?>
-                            </td>
-
-                            <td>
-                                <?= htmlspecialchars($linha['estado']) ?>
-                            </td>
-
-                            <td>
-                                <?= htmlspecialchars($linha['cep']) ?>
-                            </td>
-
-                            <td>
-                                <?= htmlspecialchars($linha['telefone']) ?>
-                            </td>
-
-                            <td>
-                                <?= htmlspecialchars($linha['email']) ?>
-                            </td>
-
-                            <td>
-                                <?= htmlspecialchars($linha['quantidade_quartos']) ?>
-                            </td>
-
-                            <td>
-
-                                <?php if ($linha['possui_wifi']): ?>
-
-                                    <span class="status-sim">
-                                        Sim
-                                    </span>
-
-                                <?php else: ?>
-
-                                    <span class="status-nao">
-                                        Não
-                                    </span>
-
-                                <?php endif; ?>
-
-                            </td>
-
-                            <td>
-
-                                <?php if ($linha['possui_estacionamento']): ?>
-
-                                    <span class="status-sim">
-                                        Sim
-                                    </span>
-
-                                <?php else: ?>
-
-                                    <span class="status-nao">
-                                        Não
-                                    </span>
-
-                                <?php endif; ?>
-
-                            </td>
-
-                            <td>
-
-                                <div class="acoes">
-
-                                    <a
-                                        class="editar"
-                                        href="atualizarhotel.php?id=<?= $linha['id'] ?>"
-                                    >
-                                        Editar
-                                    </a>
-
-                                    <a
-                                        class="excluir"
-                                        href="hoteis/delete.php?id=<?= $linha['id'] ?>"
-                                        onclick="return confirm('Deseja realmente excluir este hotel?')"
-                                    >
-                                        Excluir
-                                    </a>
-
-                                </div>
-
-                            </td>
-
-                        </tr>
-
-                    <?php endforeach; ?>
-
-                </tbody>
-
-            </table>
-
-        </div>
+        </table>
 
     </div>
 
@@ -170,3 +171,4 @@ include "../includes/header.php";
 include "../includes/footer.php";
 
 ?>
+

@@ -1,17 +1,29 @@
 <?php
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-
 
 require_once "../classe/hoteis.php";
 
 $hotel = new Hotel();
 
+if (!isset($_GET['id'])) {
+    header("Location: hoteis.php");
+    exit;
+}
+
 $id = $_GET['id'];
 
 $dados = $hotel->buscarPorId($id);
-if ($_SERVER["REQUEST_METHOD"] == "POST") {   
+
+if (!$dados) {
+    echo "Hotel não encontrado.";
+    exit;
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     $hotel->editar(
         $id,
         $_POST['nome'],
@@ -23,123 +35,238 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_POST['email'],
         $_POST['quantidade_quartos'],
         $_POST['possui_wifi'],
-        $_POST['possui_estacionamento'],
-    
-
+        $_POST['possui_estacionamento']
     );
-     
 
     header("Location: hoteis.php");
     exit;
 }
 
-include "../includes/header.php";
 include "../includes/head.php";
+include "../includes/header.php";
 
 ?>
 
-<h2>Editar Hotel</h2>
+<link rel="stylesheet" href="../assets/css/style_hoteis.css">
 
-<form method="POST">
+<div class="formulario-container">
 
-    <p>
-        Nome:<br>
-        <input
-            type="text"
-            name="nome"
-            value="<?= $dados['nome']; ?>"
-            required>
-    </p>
+    <div class="formulario-hotel">
 
-    <p>
-        Endereço:<br>
-        <input
-            type="text"
-            name="endereco"
-            value="<?= $dados['endereco']; ?>"
-            required>
-    </p>
+        <h2>Editar Hotel</h2>
 
-    <p>
-        Cidade:<br>
-        <input
-            type="text"
-            name="cidade"
-            value="<?= $dados['cidade']; ?>"
-            required>
-    </p>
+        <form method="POST">
 
-    <p>
-        Estado:<br>
-        <input
-            type="text"
-            name="estado"
-            value="<?= $dados['estado']; ?>"
-            required>
-    </p>
-    <p>
-        CEP:<br>
-        <input
-            type="text"
-            name="cep"
-            value="<?= $dados['cep']; ?>"
-            required>
-    </p>
+            <div class="formulario-linha">
 
-    <p>
-        Telefone:<br>
-        <input
-            type="text"
-            name="telefone"
-            value="<?= $dados['telefone']; ?>">
-    </p>
+                <div class="campo">
+                    <label for="nome">Nome do Hotel</label>
 
-    <p>
-        Email:<br>
-        <input
-            type="email"
-            name="email"
-            value="<?= $dados['email']; ?>">
-    </p>
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        value="<?= htmlspecialchars($dados['nome']) ?>"
+                        required
+                    >
+                </div>
 
-    <p>
-        Quantidade de Quartos:<br>
-        <input
-            type="number"
-            name="quantidade_quartos"
-            value="<?= $dados['quantidade_quartos']; ?>">
-    </p>
+                <div class="campo">
+                    <label for="cidade">Cidade</label>
 
-    <p>
-        Possui Wi-Fi:<br>
-        <select name="possui_wifi" required>
-         <option value="1" <?= $dados['possui_wifi'] == 1 ? 'selected' : '' ?>>
-            Sim
-        </option>
-        <option value="0" <?= $dados['possui_wifi'] == 0 ? 'selected' : '' ?>>
-            Não
-        </option>
-    </select>
-</p>
+                    <input
+                        type="text"
+                        id="cidade"
+                        name="cidade"
+                        value="<?= htmlspecialchars($dados['cidade']) ?>"
+                        required
+                    >
+                </div>
 
-    <p>
-        Possui Estacionamento:<br>
-        <select name="possui_estacionamento" required>
-         <option value="1" <?= $dados['possui_estacionamento'] == 1 ? 'selected' : '' ?>>
-            Sim
-        </option>
-        <option value="0" <?= $dados['possui_estacionamento'] == 0 ? 'selected' : '' ?>>
-            Não
-        </option>
-    </select>
-</p>
-     
+            </div>
 
-   
+            <div class="campo">
 
-    <button type="submit">
-        Atualizar
-    </button>
+                <label for="endereco">Endereço</label>
 
-</form>
+                <input
+                    type="text"
+                    id="endereco"
+                    name="endereco"
+                    value="<?= htmlspecialchars($dados['endereco']) ?>"
+                    required
+                >
 
+            </div>
+
+            <div class="formulario-linha">
+
+                <div class="campo">
+
+                    <label for="estado">Estado</label>
+
+                    <input
+                        type="text"
+                        id="estado"
+                        name="estado"
+                        value="<?= htmlspecialchars($dados['estado']) ?>"
+                        required
+                    >
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="cep">CEP</label>
+
+                    <input
+                        type="text"
+                        id="cep"
+                        name="cep"
+                        value="<?= htmlspecialchars($dados['cep']) ?>"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+            <div class="formulario-linha">
+
+                <div class="campo">
+
+                    <label for="telefone">Telefone</label>
+
+                    <input
+                        type="text"
+                        id="telefone"
+                        name="telefone"
+                        value="<?= htmlspecialchars($dados['telefone']) ?>"
+                    >
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="email">Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value="<?= htmlspecialchars($dados['email']) ?>"
+                    >
+
+                </div>
+
+            </div>
+
+            <div class="formulario-linha">
+
+                <div class="campo">
+
+                    <label for="quantidade_quartos">
+                        Quantidade de Quartos
+                    </label>
+
+                    <input
+                        type="number"
+                        id="quantidade_quartos"
+                        name="quantidade_quartos"
+                        min="1"
+                        value="<?= htmlspecialchars($dados['quantidade_quartos']) ?>"
+                    >
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="possui_wifi">
+                        Possui Wi-Fi?
+                    </label>
+
+                    <select
+                        id="possui_wifi"
+                        name="possui_wifi"
+                        required
+                    >
+
+                        <option
+                            value="1"
+                            <?= $dados['possui_wifi'] ? 'selected' : '' ?>
+                        >
+                            Sim
+                        </option>
+
+                        <option
+                            value="0"
+                            <?= !$dados['possui_wifi'] ? 'selected' : '' ?>
+                        >
+                            Não
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="campo">
+
+                <label for="possui_estacionamento">
+                    Possui Estacionamento?
+                </label>
+
+                <select
+                    id="possui_estacionamento"
+                    name="possui_estacionamento"
+                    required
+                >
+
+                    <option
+                        value="1"
+                        <?= $dados['possui_estacionamento'] ? 'selected' : '' ?>
+                    >
+                        Sim
+                    </option>
+
+                    <option
+                        value="0"
+                        <?= !$dados['possui_estacionamento'] ? 'selected' : '' ?>
+                    >
+                        Não
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="botoes-formulario">
+
+                <a
+                    href="hoteis.php"
+                    class="botao-voltar"
+                >
+                    Voltar
+                </a>
+
+                <button
+                    type="submit"
+                    class="botao-salvar"
+                >
+                    Atualizar Hotel
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<?php
+
+include "../includes/footer.php";
+
+?>
